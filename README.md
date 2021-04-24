@@ -32,6 +32,28 @@ Now imagine you have 500 constants instead of 4 and 30 predicates instead of 3.
 
 ## Usage
 
+You need only to provide two files: a constants file and a predicate file
+
+The constant files contains a constant per line.
+```
+a
+b
+c
+d
+e
+...
+```
+
+The predicates file contains a predicate per line
+```
+predicate1
+predicate2
+predicate3
+...
+```
+
+Using those two files **predicate-builder** generates a form.
+
 ## Project setup
 ```
 npm install
