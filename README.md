@@ -1,6 +1,7 @@
 # predicate-builder
 
-Writing a large number of predicates in Prolog is tedious.
+Adding large number of facts to Prolog programs is tedious. **predicate-builder** makes 
+it less tedious by reducing the typing necessary to create lists of facts.
 
 ## Background
 
@@ -44,7 +45,7 @@ e
 ...
 ```
 
-The predicates file contains a predicate per line
+The predicates file contains the name of unary predicates per line
 ```
 predicate1
 predicate2
@@ -52,7 +53,8 @@ predicate3
 ...
 ```
 
-Using those two files **predicate-builder** generates a form.
+Using those two files **predicate-builder** generates a form for
+assigning unary predicates to constants.
 
 ## Project setup
 ```
