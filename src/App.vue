@@ -1,17 +1,32 @@
 <template>
   <div id="app">
     <h1>Predicate Builder</h1>
-    <FileUpload />
+    <FileUpload v-on:files-uploaded="createForm"/>
+    <PredicateForm v-bind:constants="constants" v-bind:predicates="predicates"/>
   </div>
 </template>
 
 <script>
 import FileUpload from './components/FileUpload.vue'
+import PredicateForm from './components/PredicateForm.vue'
 
 export default {
   name: 'App',
   components: {
-    FileUpload
+    FileUpload,
+    PredicateForm,
+  },
+  data: function() {
+    return {
+      constants: [],
+      predicates: [],
+    };
+  },
+  methods: {
+    createForm: function(constants, predicates) {
+      this.constants = constants;
+      this.predicates = predicates;
+    },
   }
 }
 </script>
