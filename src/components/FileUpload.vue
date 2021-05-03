@@ -68,8 +68,7 @@ export default {
       Promise.all([constants, predicates]).then((values) => {
         const constants = values[0];
         const predicates = values[1];
-        console.log(constants);
-        console.log(predicates);
+        this.$emit('files-uploaded', constants, predicates);
       });
 
     }
