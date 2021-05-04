@@ -13,7 +13,10 @@
       </tr>
     </table>
     <button v-on:click="generateFile">Go</button>
-    <p v-for="(result, index) in results" v-bind:key="index">{{ result }}</p>
+    <div class="results" ref="results">
+      <p v-for="(result, index) in results" v-bind:key="index">{{ result }}</p>
+    </div>
+    <button v-on:click="clipboard">Copy to clipboard</button>
   </div>
 </template>
 
@@ -51,7 +54,20 @@ export default {
         }
       }
       this.results = results;
-    }
+    },
+    clipboard: function () {
+      const results = [];
+      for (let i = 0; i < this.predicates.length; ++i) {
+        const predicate = this.predicates[i];
+        for (let j = 0; j < this.constants.length; ++j) {
+          if (!this.matrix[j][i]) continue;
+          const constant = this.constants[j];
+          results.push(`${predicate}(${constant}).`);
+        }
+      }
+      const clipboardContents = results.join("\n");
+      this.$copyText(clipboardContents);
+    },
   }
 }
 </script>
