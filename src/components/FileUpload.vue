@@ -1,16 +1,18 @@
 <template>
   <div class="file-upload">
-    <div class="constants-upload">
-      <h3>Constants</h3>
-      <input type="file" id="constants-file"/>
-      <p v-if="noConstantsFile">You must upload a file with your constants</p>
+    <div class="files">
+      <div class="constants-upload">
+        <h3>Constants</h3>
+        <input type="file" id="constants-file"/>
+        <p v-if="noConstantsFile">You must upload a file with your constants</p>
+      </div>
+      <div class="predicates-upload">
+        <h3>Predicates</h3>
+        <input type="file" id="predicates-file"/>
+        <p v-if="noPredicatesFile">You must upload a file with your predicates</p>
+      </div>
     </div>
-    <div class="predicates-upload">
-      <h3>Predicates</h3>
-      <input type="file" id="predicates-file"/>
-      <p v-if="noPredicatesFile">You must upload a file with your predicates</p>
-    </div>
-    <button v-on:click="readFiles">Generate Form</button>
+    <button v-on:click="readFiles" class="upload-button">Generate Form</button>
   </div>
 </template>
 
@@ -76,13 +78,24 @@ export default {
 }
 </script>
 
-<style scoped>
-.file-upload {
+<style lang="scss" scoped>
+.files {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 .constants-upload, .predicates-upload {
-  padding: 1rem;
+  margin: 1rem;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  h3 {
+    margin-top: 0;
+  }
+}
+.upload-button {
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

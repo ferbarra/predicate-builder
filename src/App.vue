@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <h1>Predicate Builder</h1>
+    <hr/>
     <FileUpload v-on:files-uploaded="createForm"/>
+    <hr/>
     <PredicateForm v-bind:constants="constants" v-bind:predicates="predicates"/>
   </div>
 </template>
