@@ -4,12 +4,12 @@
       <div class="constants-upload">
         <h3>Constants</h3>
         <input type="file" id="constants-file"/>
-        <p v-if="noConstantsFile">You must upload a file with your constants</p>
+        <p v-visible="noConstantsFile" class="warning">You must upload a file with your constants</p>
       </div>
       <div class="predicates-upload">
         <h3>Predicates</h3>
         <input type="file" id="predicates-file"/>
-        <p v-if="noPredicatesFile">You must upload a file with your predicates</p>
+        <p v-visible="noPredicatesFile" class="warning">You must upload a file with your predicates</p>
       </div>
     </div>
     <button v-on:click="readFiles" class="upload-button">Generate Form</button>
@@ -88,9 +88,14 @@ export default {
   margin: 1rem;
   padding: 2rem;
   background-color: #f5f5f5;
+  border: 1px solid;
   border-radius: 5px;
+  border-color: #ddd;
   h3 {
     margin-top: 0;
+  }
+  .warning {
+    margin-bottom: 0;
   }
 }
 .upload-button {
