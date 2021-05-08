@@ -1,5 +1,6 @@
 <template>
   <div class="predicate-form">
+    <button v-on:click="$emit('new-predicates-and-constants')">New predicates and constants</button>
     <table>
       <tr>
         <th></th>

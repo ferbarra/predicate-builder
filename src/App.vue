@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <h1>Predicate Builder</h1>
-    <hr/>
-    <FileUpload v-on:files-uploaded="createForm"/>
-    <hr/>
-    <PredicateForm v-bind:constants="constants" v-bind:predicates="predicates"/>
+    <!-- <FileUpload v-on:files-uploaded="createForm"/> -->
+    <!-- <PredicateForm v-bind:constants="constants" v-bind:predicates="predicates"/> -->
+    <component  v-bind:is="currentComponent"
+                v-bind="currentComponentProperties"
+                v-on:files-uploaded="showPredicateForm"
+                v-on:new-predicates-and-constants="showFileUpload"></component>
   </div>
 </template>
 
@@ -22,13 +24,26 @@ export default {
     return {
       constants: [],
       predicates: [],
+      currentComponent: 'file-upload',
     };
   },
+  computed: {
+    currentComponentProperties: function () {
+      if (this.currentComponent == 'predicate-form') {
+        return { constants: this.constants, predicates: this.predicates };
+      }
+      return {};
+    }
+  },
   methods: {
-    createForm: function(constants, predicates) {
+    showPredicateForm: function(constants, predicates) {
       this.constants = constants;
       this.predicates = predicates;
+      this.currentComponent = 'predicate-form';
     },
+    showFileUpload: function() {
+      this.currentComponent = 'file-upload';
+    }
   }
 }
 </script>
